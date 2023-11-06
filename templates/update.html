@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+update Page
+{% endblock %}
+
+{% block content %}
+
+<div class="col-md-4 mx-auto bg-dark">
+    <div class="text-center text-white mt-5">
+        <h1>Update Task Here</h1>
+    </div>
+    <form action="{% url 'update_task' task_instance.task_name %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="taskName">Task Name</label>
+            <input type="text" class="form-control" id="taskName" name="task_name"
+                value="{{task_instance.task_name}}">
+        </div>
+        <div class="form-group">
+            <label for="taskDescription">Task Description</label>
+            <textarea class="form-control" id="taskDescription" name="task_describtion" rows="4"
+                placeholder="{{task_instance.task_describtion}}" required></textarea>
+        </div>
+        <div class="col-md-12 mt-3">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
